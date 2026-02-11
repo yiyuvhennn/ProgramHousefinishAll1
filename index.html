@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- 宣告這是HTML5文件 -->
+<html lang="zh-TW"> 
+<!-- 宣告整份網頁使用的語言是繁體中文（台灣地區）。 -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 設定文字編碼，確保中文顯示正常 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 讓網頁在手機、平板上可以正確縮放（RWD設定）。 -->
+    <title>591-test (Vue)</title>
+    <!-- 設定瀏覽器標籤上顯示的頁面名稱。 -->
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <!-- 載入「normalize.css」，它會統一不同瀏覽器的預設樣式（讓畫面在不同瀏覽器上一致）。 -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- 載入你的主要樣式表（整體網頁設計的 CSS）。 -->
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- Vue 應用程式會掛載（mount）在這個區塊。
+      所有 Vue 組件的畫面最後都會渲染進這個 <div>。 -->
+    <script type="module" src="/src/main.ts"></script>
+    <!-- 載入你的 Vue 專案主程式 main.js，
+          這支程式會：
+            1.匯入 Vue 套件
+            2.建立 Vue 應用實例
+            3.掛載到上面的 #app div -->
+  </body>
+</html>

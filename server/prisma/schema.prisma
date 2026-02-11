@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model House {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  title       String
+  city        String?
+  price       String?
+  area        String?
+  rooms       String?
+  image       String?
+  features    String?   // ✅ 先保留，避免前端先壞
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  houseFeatures HouseFeature[] // ✅ 新的多對多關聯
+}
+
+model Feature {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  houseFeatures HouseFeature[]
+}
+
+model HouseFeature {
+  houseId   Int
+  featureId Int
+
+  house   House   @relation(fields: [houseId], references: [id], onDelete: Cascade)
+  feature Feature @relation(fields: [featureId], references: [id], onDelete: Cascade)
+
+  @@id([houseId, featureId])
+  @@index([featureId]) // （可選）之後用 feature 查 house 會快一點
+}

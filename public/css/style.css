@@ -1,0 +1,358 @@
+@charset "utf-8";
+/*
+ * Page name
+ * Copyright 2020
+ * Author
+ * Licensed
+ */
+/* -------------------------- *\
+	Content
+\* -------------------------- */
+/**
+ * Content ............ You are reading it!
+ * Globel ............ Set common styles
+ * Layout ............ Set grid styles
+ * Component ............ Set component styles
+ */
+
+/* -------------------------- *\
+	Globel
+\* -------------------------- */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	background-color: #fff;
+    font-family: '微軟正黑體', arial;
+}
+
+html{
+	font-family: '微軟正黑體', arial;
+}
+h1,h2,h3,h4,h5,h6,p{
+	margin: 0;
+}
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #333;
+}
+/* -------------------------- *\
+	Layout
+\* -------------------------- */
+.title{
+	text-align: center;
+	
+	font-size: 32px;
+	font-weight: 800;
+	letter-spacing: 10px;
+
+	padding-top: 10px;
+	padding-bottom: 30px;
+
+	text-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+}
+.container {
+	max-width: 1600px;   /* ✅ 改成 max-width 而不是 width */
+	width: 100%;         /* ✅ 讓它能自動撐滿頁面 */
+	margin: 0 auto;
+	padding: 0 10px;
+}
+.row{
+	/*border: 1px solid blue;*/
+	margin-left: -16px;
+	margin-right: -16px;
+}
+.row:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.col-1-4 ,.col-1-2{
+	float: left;
+	padding-left: 16px;
+	padding-right: 16px;
+
+	/* border: 1px solid red; */
+}
+.col-1-2{
+	width: 50%;
+}
+.col-1-3{
+	width: 33.333333%;
+}
+.col-1-4{
+	width: 25%;
+	
+}
+/* -------------------------- *\
+	Component
+\* -------------------------- */
+.mask-dark{
+	background-color: rgba(0,0,0,0.7);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/* 導覽列：兩排，上排右邊是登入，下排是主選單 */
+/* 整個導覽列 */
+/* 整個導覽列：一排可換行 */
+.navbar{
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 500;
+  background: #000;
+  border-bottom: 1px solid #222;
+}
+
+/* 這一層才是 brand / nav1 / nav2 的共同父層（很重要） */
+.navbar > .container{
+  display: flex;
+  flex-wrap: wrap;        /* 允許換行 */
+  align-items: center;
+  padding: 10px 40px 0;   /* 上右下內距；下排 nav2 會在下一行 */
+}
+/* 左邊 Logo */
+.navbar .brand{
+  display: inline-block;
+  width: 160px;
+  height: 50px;
+  background-image: url('/img/逢甲房屋交易.png'); /* ← 修正路徑 */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left center;
+  text-indent: -9999px;
+  overflow: hidden;
+  background-color: #f7a400; /* 有橘底就保留 */
+  border-radius: 4px;
+}
+/* 第一排右側：登入／我要刊登／幫助／數字App */
+.nav1{
+  display: flex;
+  margin-left: auto;      /* 把 nav1 推到第一排最右 */
+  gap: 40px;              /* 每個項目間距 */
+  list-style: none;
+}
+.nav1 .nav-item a{
+  color: #fff;            /* 白字 */
+  font-weight: 700;
+  text-decoration: none;
+}
+.nav1 .nav-item a:hover{
+  color: #f7a400;
+  transition: color .2s ease;
+}
+
+/* 第二排：主選單 */
+.nav2{
+  	flex-basis: 100%;       /* 吃滿第二排 */
+  	display: flex;
+  	gap: 24px;
+  	border-top: 1px solid #222;
+  	list-style: none;
+	line-height: 45px;
+	justify-content: center;   /* ✅ 讓整排導覽項目置中 */
+	align-items: center;       /* ✅ 垂直置中（讓文字在高度內置中） */
+}
+.nav2 .nav-item a{
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.nav2 .nav-item a:hover{
+  color: #f7a400;
+  transition: color .2s ease;
+}
+
+.jumbotron {
+  position: relative;           /* ✅ 讓 .mask-dark 以它為基準定位 */
+  width: 100%;
+  height: 100vh;                /* ✅ 改成視窗高度（滿版效果） */
+  background-image: url('/public/img/逢甲大學.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;             /* 避免內層跑出來 */
+  border: none;
+}
+
+/* hero */
+.hero{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	/*border: 1px solid #000;*/
+}
+.hero.hero-bg-white{
+	border: 1px solid #000;
+	background-color: #fefefe;
+}
+.hero.hero-bg-grey{
+	border: 1px solid #000;
+	background-color: #efefef;
+}
+/* rental-house */
+/* Image container1 */
+/* 房屋卡片圖片容器（修正定位與比例） */
+.image-container1{
+  position: relative;     /* ← 讓下面的 .image1 以它為定位基準 */
+  width: 100%;
+  aspect-ratio: 4 / 3;    /* 建議用比例，畫面更整齊；若要固定高也可改回 height */
+  overflow: hidden;
+  border: 1px solid #000; /* 需要邊框就保留 */
+}
+
+.image-container1 .image1{
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/興富發上城.jpg'); /* ← 修正路徑（去掉 /public） */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* Product */
+.product{
+	width: 100%;
+    /* border: 1px solid #000; */
+    background-color: #fff;
+    box-shadow: 0 8px 36px rgba(0,0,0,0.5);
+    border-radius: 5px;
+}
+.product .about-info{
+	padding: 10px;
+}
+.product .about-info .name{
+	font-size: 24px;
+	margin-bottom: 16px;
+}
+.product .about-info .para{
+	font-size: 16px;
+	line-height: 18px;
+	text-align: left;
+	margin-bottom: 16px;
+}
+
+
+.copywriting{
+    border: 1px solid #000;
+}
+/* Image container2 */
+/* Copywriting 區塊圖片容器 */
+.image-container2 {
+	position: relative;
+	width: 100%;           /* 寬度依容器自動縮放 */
+	max-width: 480px;      /* ✅ 限制最大寬度，可自行調整 */
+	aspect-ratio: 4 / 3;   /* ✅ 維持圖片比例 */
+	overflow: hidden;
+	margin: 0 auto;        /* ✅ 讓它在區塊內置中 */
+	border-radius: 8px;    /* （可選）讓邊角柔和一點 */
+}
+/* 背景圖設定 */
+.copywriting-image {
+	border: 2px solid #000;
+	position: absolute;
+	inset: 0;
+	background-image: url('/img/建案.jpg');
+	background-size: cover;       /* ✅ 圖片填滿容器 */
+	background-position: center;  /* ✅ 置中顯示 */
+	background-repeat: no-repeat;
+}
+.copywriting-about{
+	text-align: center;
+	padding-top: 10px;
+}
+.copywriting-name{
+	font-size: 32px;
+	padding: 20px 0;
+}
+.ul-para{
+	padding: 20px 100px;
+	list-style-type: circle;
+	text-align: left;
+	line-height: 40px;
+}
+/* 主要的按鈕 */
+.btn.btn-primary{
+	background-color: #016b83;
+	border: 1px solid #016b83;
+	color: #fff;
+}
+.btn.btn-primary:hover{
+	background-color: #371cc0;
+	border: 1px solid #371cc0;
+}
+.copywriting-about .btn{
+	border-radius: 4px;    /* （可選）讓邊角柔和一點 */
+}
+
+/* info3 */
+.info3 h1{
+	border: 1px solid #000;
+}
+
+
+
+
+
+/* footer */
+
+.footer .brand{
+	display: block;
+	width: 240px;
+	height: 10px;
+	margin: 0 auto;
+	/* background-image: url('../images/common/logo-w.png'); */
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+.footer .nav{
+	display: flex;
+	justify-content: center;
+}
+.footer .nav .nav-link{
+	color: #000;
+	display: block;
+	padding: 24px;
+	line-height: 24px;
+	transition: all 0.3s;
+}
+.footer .nav .nav-link:hover{
+	color: #bc6ae8;
+}
+.footer .nav2{
+	display: flex;
+	justify-content: center;
+}
+.footer .nav2 .nav-link{
+	color: #000;
+	display: block;
+	padding: 24px;
+	line-height: 24px;
+	transition: all 0.3s;
+}
+.footer .nav2 .nav-link:hover{
+	color: #bc6ae8;
+}
+.placename{
+    display: block;
+}
+.footer .copyright{
+	background-color: rgba(0,0,0,0.8);
+	color: #ccc;
+	text-align: center;
+	line-height: 24px;
+	padding: 16px 0;
+	font-size: 14px;
+}
